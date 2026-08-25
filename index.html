@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; -webkit-font-smoothing: antialiased; }
+  @keyframes itsxFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .itsx-nav-item { position: relative; }
+  .itsx-nav-dropdown { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-6px); min-width: 190px; padding: 8px; background: #fff; border: 1px solid rgba(27,34,48,0.08); border-radius: 14px; box-shadow: 0 18px 40px -20px rgba(22,48,110,0.35); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .15s ease, transform .15s ease; z-index: 60; }
+  .itsx-nav-item:hover .itsx-nav-dropdown, .itsx-nav-item:focus-within .itsx-nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+</style>
+</helmet>
+
+<div style="font-family: 'Hanken Grotesk', system-ui, sans-serif; color: #1b2230; min-height: 100vh; overflow-x: hidden; position: relative; background: radial-gradient(40% 22% at 100% 5%, rgba(58,86,228,0.82) 0%, rgba(58,86,228,0.30) 42%, rgba(58,86,228,0) 70%), radial-gradient(36% 22% at 103% 22%, rgba(72,102,238,0.60) 0%, rgba(72,102,238,0) 68%), radial-gradient(42% 16% at -2% 13%, rgba(66,96,232,0.74) 0%, rgba(66,96,232,0.26) 42%, rgba(66,96,232,0) 70%), radial-gradient(40% 13% at 8% 19%, rgba(96,128,240,0.40) 0%, rgba(96,128,240,0) 66%), radial-gradient(46% 22% at 96% 50%, rgba(66,96,232,0.40) 0%, rgba(66,96,232,0) 70%), radial-gradient(46% 20% at 2% 42%, rgba(96,128,240,0.32) 0%, rgba(96,128,240,0) 66%), radial-gradient(52% 22% at 92% 76%, rgba(72,102,238,0.40) 0%, rgba(72,102,238,0) 70%), radial-gradient(58% 22% at 14% 70%, rgba(80,110,235,0.34) 0%, rgba(80,110,235,0) 68%), radial-gradient(60% 22% at 50% 94%, rgba(74,104,236,0.42) 0%, rgba(74,104,236,0) 70%), linear-gradient(180deg, #f4f7fe 0%, #eaf0fd 40%, #e3ebfc 72%, #dbe6fb 100%);">
+
+  <!-- ============ HEADER BANNER ============ -->
+  <header style="position: sticky; top: 18px; z-index: 50; padding: 0 24px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 9px 12px 9px 14px; background: rgba(255,255,255,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(27,34,48,0.07); border-radius: 999px; box-shadow: 0 12px 34px -16px rgba(22,48,110,0.28);">
+      <a href="#top" style="display: flex; align-items: center; flex: 0 0 auto;">
+        <img src="assets/itsx-logo.png" alt="ITSX Commercial" style="height: 44px; width: auto; display: block; object-fit: contain; mix-blend-mode: multiply;">
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display: flex; align-items: center; gap: 6px; flex: 1 1 auto; justify-content: center;">
+          <a href="#about" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">About us</a>
+          <div class="itsx-nav-item">
+            <a href="#services" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px; display: inline-block;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Services</a>
+            <div class="itsx-nav-dropdown">
+              <a href="AI Management.dc.html#top" style="display: block; text-decoration: none; color: #344056; font-weight: 600; font-size: 14px; padding: 10px 12px; border-radius: 10px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">AI Services</a>
+              <a href="Cloud Commercial Advisory.dc.html#top" style="display: block; text-decoration: none; color: #344056; font-weight: 600; font-size: 14px; padding: 10px 12px; border-radius: 10px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Cloud Advisory</a>
+            </div>
+          </div>
+          <a href="#customers" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Customers</a>
+        </nav>
+        <button onClick="{{ openModal }}" style="flex: 0 0 auto; border: none; cursor: pointer; font-family: inherit; color: #fff; font-weight: 700; font-size: 15px; padding: 11px 22px; border-radius: 999px; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 8px 20px -8px rgba(31,74,160,0.7);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">Get in touch</button>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMenu }}" aria-label="Menu" style="flex: 0 0 auto; border: none; cursor: pointer; width: 42px; height: 42px; border-radius: 999px; background: rgba(47,111,214,0.08); color: #1f4aa0; display: flex; align-items: center; justify-content: center;">{{ menuIcon }}</button>
+      </sc-if>
+    </div>
+    <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 1180px; margin: 10px auto 0; padding: 12px; background: rgba(255,255,255,0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(27,34,48,0.07); border-radius: 20px; box-shadow: 0 12px 34px -16px rgba(22,48,110,0.28); display: flex; flex-direction: column; gap: 4px;">
+        <a href="#about" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">About us</a>
+        <a href="#services" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Services</a>
+        <a href="AI Management.dc.html#top" onClick="{{ closeMenu }}" style="text-decoration: none; color: #4a5668; font-weight: 600; font-size: 15px; padding: 10px 14px 10px 30px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">AI Services</a>
+        <a href="Cloud Commercial Advisory.dc.html#top" onClick="{{ closeMenu }}" style="text-decoration: none; color: #4a5668; font-weight: 600; font-size: 15px; padding: 10px 14px 10px 30px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Cloud Advisory</a>
+        <a href="#customers" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Customers</a>
+        <button onClick="{{ openModalFromMenu }}" style="margin-top: 6px; border: none; cursor: pointer; font-family: inherit; color: #fff; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 999px; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 8px 20px -8px rgba(31,74,160,0.7);">Get in touch</button>
+      </div>
+    </sc-if>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" style="max-width: 1000px; margin: 0 auto; padding: 52px 24px 36px; text-align: center;">
+    <div style="display: inline-flex; align-items: center; gap: 9px; padding: 7px 16px; border-radius: 999px; background: rgba(47,111,214,0.08); border: 1px solid rgba(47,111,214,0.16); color: #1f4aa0; font-weight: 600; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 28px;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background: #2f6fd6;"></span>
+      Specialist commercial consultancy
+    </div>
+    <h1 style="margin: 0; font-weight: 800; font-size: clamp(44px, 6.4vw, 78px); line-height: 1.02; letter-spacing: -0.025em;">
+      <span style="display: block; color: #1b2230;">Independent Expertise.</span>
+      <span style="display: block; color: #2f6fd6;">Proven Outcomes.</span>
+    </h1>
+    <p style="margin: 28px auto 0; max-width: 660px; font-size: clamp(17px, 2vw, 20px); line-height: 1.6; color: #4a5668; font-weight: 400;">
+      We are a specialist commercial consultancy focused on helping organisations unlock maximum value from their technology vendor relationships.
+    </p>
+    <div style="display: flex; gap: 14px; justify-content: center; margin-top: 38px; flex-wrap: wrap;">
+      <button onClick="{{ openModal }}" style="border: none; cursor: pointer; font-family: inherit; color: #fff; font-weight: 700; font-size: 16px; padding: 15px 30px; border-radius: 999px; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 12px 28px -10px rgba(31,74,160,0.65);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">Get in touch</button>
+      <a href="#services" style="text-decoration: none; color: #1f4aa0; font-weight: 700; font-size: 16px; padding: 15px 30px; border-radius: 999px; background: #fff; border: 1px solid rgba(27,34,48,0.1);" style-hover="border-color: rgba(47,111,214,0.4);">Our services</a>
+    </div>
+  </section>
+
+  <!-- ============ FIRST SECTION — ENTERPRISE SCALE ============ -->
+  <section id="about" style="max-width: 1180px; margin: 0 auto; padding: 20px 24px 48px;">
+    <div style="position: relative; border-radius: 28px; overflow: hidden; min-height: 420px; display: flex; align-items: flex-end; background-image: url('assets/skyscraper.png'); background-size: cover; background-position: center 30%; box-shadow: 0 30px 70px -30px rgba(22,48,110,0.5);">
+      <div style="position: absolute; inset: 0; background: linear-gradient(115deg, rgba(12,22,42,0.86) 0%, rgba(15,35,72,0.62) 42%, rgba(20,55,120,0.12) 78%, rgba(20,55,120,0) 100%);"></div>
+      <div style="position: relative; padding: 56px clamp(32px, 5vw, 72px); max-width: 660px;">
+        <div style="display: inline-flex; align-items: center; gap: 9px; padding: 7px 15px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); color: #dce8fb; font-weight: 600; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 22px; backdrop-filter: blur(6px);">
+        Enterprise scale
+        </div>
+        <h2 style="margin: 0; color: #fff; font-weight: 800; font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -0.02em;">
+          Trusted on the largest, most complex technology deals in the market.
+        </h2>
+      </div>
+    </div>
+    <p style="margin: 28px auto 0; max-width: 820px; text-align: center; font-size: clamp(18px, 2.1vw, 22px); line-height: 1.55; color: #3a475c; font-weight: 500;">
+      We work alongside CIOs, CFOs and procurement leaders at global enterprises to shape, negotiate and govern their most material vendor commitments.
+    </p>
+  </section>
+
+  <!-- ============ THIRD SECTION — WHY ITSX COMMERCIAL ============ -->
+  <section id="services" style="max-width: 1180px; margin: 0 auto; padding: 16px 24px 48px;">
+    <div style="text-align: center; margin-bottom: 30px;">
+      <div style="display: inline-block; padding: 6px 15px; border-radius: 999px; background: rgba(47,111,214,0.08); border: 1px solid rgba(47,111,214,0.16); color: #1f4aa0; font-weight: 600; font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 18px;">What we do</div>
+      <h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -0.02em; color: #1b2230;">Why ITSX Commercial</h2>
+    </div>
+
+    <div style="position: relative; border-radius: 28px; overflow: hidden; padding: clamp(28px, 4vw, 56px); background: radial-gradient(120% 140% at 100% 0%, #2a5db8 0%, #16315f 46%, #0d1426 100%); box-shadow: 0 30px 70px -30px rgba(13,20,38,0.7);">
+      <div style="{{ tabsGridStyle }}">
+
+        <!-- tabs -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+            <button onClick="{{ tab.onSelect }}" style="{{ tab.btnStyle }}">
+              <span style="{{ tab.iconWrapStyle }}">{{ tab.icon }}</span>
+              <span style="flex: 1 1 auto;">{{ tab.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+
+        <!-- panel -->
+        <div style="min-height: 320px;" key="{{ activeTab.key }}">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+            <span style="display: flex; width: 46px; height: 46px; border-radius: 12px; align-items: center; justify-content: center; flex: 0 0 auto; background: rgba(255,255,255,0.12); color: #cfe0ff;">{{ activeTab.bigIcon }}</span>
+            <h3 style="margin: 0; color: #fff; font-weight: 700; font-size: clamp(24px, 2.8vw, 34px); letter-spacing: -0.01em;">{{ activeTab.heading }}</h3>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 560px;">
+            <sc-for list="{{ activeTab.body }}" as="para" hint-placeholder-count="2">
+              <p style="margin: 0; color: rgba(225,234,248,0.82); font-size: clamp(16px, 1.7vw, 18px); line-height: 1.65;">{{ para }}</p>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px;">
+            <sc-for list="{{ activeTab.tags }}" as="tag" hint-placeholder-count="2">
+              <span style="padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); color: #dce8fb; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;">{{ tag }}</span>
+            </sc-for>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL SECTION — AREAS OF EXPERTISE ============ -->
+  <section style="max-width: 1180px; margin: 0 auto; padding: 16px 24px 48px;">
+    <div style="text-align: center; margin-bottom: 14px;">
+      <h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 4vw, 48px); line-height: 1.06; letter-spacing: -0.025em; color: #1b2230;">Areas where we have the <span style="color: #6ea3dd;">most expertise</span></h2>
+    </div>
+    <p style="margin: 0 auto 34px; max-width: 620px; text-align: center; font-size: clamp(16px, 1.9vw, 19px); line-height: 1.55; color: #5a6678;">
+      Specialist knowledge across the vendors where deals are most complex, and value is most often left on the table.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+
+      <!-- Microsoft -->
+      <div style="flex: 1 1 320px; max-width: 360px; background: #fff; border: 1px solid rgba(27,34,48,0.07); border-radius: 20px; padding: 30px; box-shadow: 0 18px 40px -28px rgba(22,48,110,0.4); display: flex; flex-direction: column;">
+        <div style="height: 58px; display: flex; align-items: center;">
+          <img src="assets/logo-microsoft.png" alt="Microsoft" style="height: 38px; width: auto; max-width: 180px; object-fit: contain; display: block;">
+        </div>
+        <div style="height: 1px; background: rgba(27,34,48,0.08); margin: 22px 0 24px;"></div>
+        <p style="margin: 0 0 26px; flex: 1 1 auto; color: #4a5668; font-size: 16px; line-height: 1.6;">Full deal lifecycle support across EA, MCA and Azure commitments, securing market-leading terms and stronger financial predictability.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">EA / MCA</span>
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">AZURE</span>
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">LICENSING</span>
+        </div>
+      </div>
+
+      <!-- IBM -->
+      <div style="flex: 1 1 320px; max-width: 360px; background: #fff; border: 1px solid rgba(27,34,48,0.07); border-radius: 20px; padding: 30px; box-shadow: 0 18px 40px -28px rgba(22,48,110,0.4); display: flex; flex-direction: column;">
+        <div style="height: 58px; display: flex; align-items: center;">
+          <img src="assets/logo-ibm.png" alt="IBM" style="height: 40px; width: auto; max-width: 140px; object-fit: contain; display: block;">
+        </div>
+        <div style="height: 1px; background: rgba(27,34,48,0.08); margin: 22px 0 24px;"></div>
+        <p style="margin: 0 0 26px; flex: 1 1 auto; color: #4a5668; font-size: 16px; line-height: 1.6;">Trusted commercial partner across IBM's complex deal landscape, delivering cost transparency and long-term spend control.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">INFRASTRUCTURE</span>
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">LICENSING</span>
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">MSES</span>
+        </div>
+      </div>
+
+      <!-- AWS -->
+      <div style="flex: 1 1 320px; max-width: 360px; background: #fff; border: 1px solid rgba(27,34,48,0.07); border-radius: 20px; padding: 30px; box-shadow: 0 18px 40px -28px rgba(22,48,110,0.4); display: flex; flex-direction: column;">
+        <div style="height: 58px; display: flex; align-items: center;">
+          <img src="assets/logo-aws.png" alt="AWS" style="height: 48px; width: auto; max-width: 110px; object-fit: contain; display: block;">
+        </div>
+        <div style="height: 1px; background: rgba(27,34,48,0.08); margin: 22px 0 24px;"></div>
+        <p style="margin: 0 0 26px; flex: 1 1 auto; color: #4a5668; font-size: 16px; line-height: 1.6;">Specialist advisory on enterprise discount programmes and large-scale cloud commitments with disciplined governance.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">EDP</span>
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">CLOUD COMMIT</span>
+        </div>
+      </div>
+
+      <!-- SAP -->
+      <div style="flex: 1 1 320px; max-width: 360px; background: #fff; border: 1px solid rgba(27,34,48,0.07); border-radius: 20px; padding: 30px; box-shadow: 0 18px 40px -28px rgba(22,48,110,0.4); display: flex; flex-direction: column;">
+        <div style="height: 58px; display: flex; align-items: center;">
+          <img src="assets/logo-sap.png" alt="SAP" style="height: 44px; width: auto; max-width: 120px; object-fit: contain; display: block;">
+        </div>
+        <div style="height: 1px; background: rgba(27,34,48,0.08); margin: 22px 0 24px;"></div>
+        <p style="margin: 0 0 26px; flex: 1 1 auto; color: #4a5668; font-size: 16px; line-height: 1.6;">Advisory across S/4HANA transformation, entitlement structuring and indirect access risk, reducing exposure and strengthening flexibility.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">S/4HANA</span>
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">INDIRECT ACCESS</span>
+        </div>
+      </div>
+
+      <!-- Oracle -->
+      <div style="flex: 1 1 320px; max-width: 360px; background: #fff; border: 1px solid rgba(27,34,48,0.07); border-radius: 20px; padding: 30px; box-shadow: 0 18px 40px -28px rgba(22,48,110,0.4); display: flex; flex-direction: column;">
+        <div style="height: 58px; display: flex; align-items: center;">
+          <img src="assets/logo-oracle.png" alt="Oracle" style="height: 30px; width: auto; max-width: 170px; object-fit: contain; display: block;">
+        </div>
+        <div style="height: 1px; background: rgba(27,34,48,0.08); margin: 22px 0 24px;"></div>
+        <p style="margin: 0 0 26px; flex: 1 1 auto; color: #4a5668; font-size: 16px; line-height: 1.6;">Managing Oracle's commercial complexity, clarifying licence positions, mitigating audit risk and structuring agreements that deliver control.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">LICENSING</span>
+          <span style="padding: 6px 12px; border-radius: 8px; background: #f0f5fc; border: 1px solid rgba(27,34,48,0.07); color: #2b3a52; font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em;">AUDIT DEFENCE</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 34px;">
+      <p style="text-align: center; margin: 0 0 22px; color: #5a6678; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Vendors we work across</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: calc(40px * {{ vendorScale }}) calc(56px * {{ vendorScale }}); padding: calc(40px * {{ vendorScale }}) calc(46px * {{ vendorScale }}); background: #ffffff; border-radius: 20px;">
+        <img src="assets/v-vmware.png" alt="VMware by Broadcom" style="height: calc(60px * {{ vendorScale }}); max-width: 190px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-paloalto.png" alt="Palo Alto Networks" style="height: calc(60px * {{ vendorScale }}); max-width: 185px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-okta.png" alt="Okta" style="height: calc(60px * {{ vendorScale }}); max-width: 175px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-googlecloud.png" alt="Google Cloud" style="height: calc(60px * {{ vendorScale }}); max-width: 150px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-cisco.png" alt="Cisco" style="height: calc(60px * {{ vendorScale }}); max-width: 165px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-workday.png" alt="Workday" style="height: calc(60px * {{ vendorScale }}); max-width: 175px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-atlassian.png" alt="Atlassian" style="height: calc(60px * {{ vendorScale }}); max-width: 150px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-servicenow.png" alt="ServiceNow" style="height: calc(60px * {{ vendorScale }}); max-width: 210px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-adobe.png" alt="Adobe" style="height: calc(60px * {{ vendorScale }}); max-width: 175px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-salesforce.png" alt="Salesforce" style="height: calc(60px * {{ vendorScale }}); max-width: 150px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-snowflake.png" alt="Snowflake" style="height: calc(60px * {{ vendorScale }}); max-width: 210px; width: auto; object-fit: contain; display: block;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECOND SECTION — TRUSTED BY ============ -->
+  <section id="customers" style="max-width: 1180px; margin: 0 auto; padding: 16px 24px 56px; text-align: center;">
+    <h2 style="margin: 0 auto 30px; max-width: 880px; font-weight: 800; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.02em; color: #1b2230;">
+      Trusted by organisations that refuse to leave <span style="color: #2f6fd6;">value on the table.</span>
+    </h2>
+    <div style="max-width: 1060px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: calc(18px * {{ custScale }}); justify-content: center;">
+      <div style="flex: 1 1 calc(175px * {{ custScale }}); max-width: calc(215px * {{ custScale }}); height: calc(118px * {{ custScale }}); display: flex; align-items: center; justify-content: center; padding: calc(22px * {{ custScale }}); background: #f1f3f6; border-radius: 16px;"><img src="assets/cust-dwp.png" alt="Department for Work & Pensions" style="max-width: 80%; max-height: calc(72px * {{ custScale }}); width: auto; height: auto; object-fit: contain; display: block;"></div>
+      <div style="flex: 1 1 calc(175px * {{ custScale }}); max-width: calc(215px * {{ custScale }}); height: calc(118px * {{ custScale }}); display: flex; align-items: center; justify-content: center; padding: calc(22px * {{ custScale }}); background: #f1f3f6; border-radius: 16px;"><img src="assets/cust-proxima.png" alt="Proxima" style="max-width: 80%; max-height: calc(56px * {{ custScale }}); width: auto; height: auto; object-fit: contain; display: block;"></div>
+      <div style="flex: 1 1 calc(175px * {{ custScale }}); max-width: calc(215px * {{ custScale }}); height: calc(118px * {{ custScale }}); display: flex; align-items: center; justify-content: center; padding: calc(22px * {{ custScale }}); background: #f1f3f6; border-radius: 16px;"><img src="assets/cust-boxxe.png" alt="boxxe" style="max-width: 84%; max-height: calc(60px * {{ custScale }}); width: auto; height: auto; object-fit: contain; display: block;"></div>
+      <div style="flex: 1 1 calc(175px * {{ custScale }}); max-width: calc(215px * {{ custScale }}); height: calc(118px * {{ custScale }}); display: flex; align-items: center; justify-content: center; padding: calc(22px * {{ custScale }}); background: #f1f3f6; border-radius: 16px;"><img src="assets/cust-infosys.png" alt="Infosys" style="max-width: 76%; max-height: calc(56px * {{ custScale }}); width: auto; height: auto; object-fit: contain; display: block;"></div>
+      <div style="flex: 1 1 calc(175px * {{ custScale }}); max-width: calc(215px * {{ custScale }}); height: calc(118px * {{ custScale }}); display: flex; align-items: center; justify-content: center; padding: calc(22px * {{ custScale }}); background: #f1f3f6; border-radius: 16px;"><img src="assets/cust-softcat.png" alt="Softcat" style="max-width: 80%; max-height: calc(60px * {{ custScale }}); width: auto; height: auto; object-fit: contain; display: block;"></div>
+      <div style="flex: 1 1 calc(175px * {{ custScale }}); max-width: calc(215px * {{ custScale }}); height: calc(118px * {{ custScale }}); display: flex; align-items: center; justify-content: center; padding: calc(22px * {{ custScale }}); background: #f1f3f6; border-radius: 16px;"><img src="assets/cust-flexera.png" alt="Flexera" style="max-width: 80%; max-height: calc(48px * {{ custScale }}); width: auto; height: auto; object-fit: contain; display: block;"></div>
+      <div style="flex: 1 1 calc(175px * {{ custScale }}); max-width: calc(215px * {{ custScale }}); height: calc(118px * {{ custScale }}); display: flex; align-items: center; justify-content: center; padding: calc(22px * {{ custScale }}); background: #f1f3f6; border-radius: 16px;"><img src="assets/cust-bdo.png" alt="BDO" style="max-width: 70%; max-height: calc(56px * {{ custScale }}); width: auto; height: auto; object-fit: contain; display: block;"></div>
+      <div style="flex: 1 1 calc(175px * {{ custScale }}); max-width: calc(215px * {{ custScale }}); height: calc(118px * {{ custScale }}); display: flex; align-items: center; justify-content: center; padding: calc(22px * {{ custScale }}); background: #f1f3f6; border-radius: 16px;"><img src="assets/cust-haleon.png" alt="Haleon" style="max-width: 80%; max-height: calc(44px * {{ custScale }}); width: auto; height: auto; object-fit: contain; display: block;"></div>
+      <div style="flex: 1 1 calc(175px * {{ custScale }}); max-width: calc(215px * {{ custScale }}); height: calc(118px * {{ custScale }}); display: flex; align-items: center; justify-content: center; padding: calc(22px * {{ custScale }}); background: #f1f3f6; border-radius: 16px;"><img src="assets/cust-bain.png" alt="Bain & Company" style="max-width: 86%; max-height: calc(40px * {{ custScale }}); width: auto; height: auto; object-fit: contain; display: block;"></div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contact" style="padding: 0 24px 48px;">
+    <div style="max-width: 1180px; margin: 0 auto; position: relative; border-radius: 28px; overflow: hidden; padding: clamp(40px, 6vw, 72px) clamp(28px, 5vw, 72px); background: radial-gradient(120% 160% at 0% 0%, #2a5db8 0%, #16315f 46%, #0d1426 100%); box-shadow: 0 30px 70px -30px rgba(13,20,38,0.7);">
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between;">
+        <div style="max-width: 520px;">
+          <span style="display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 20px; background: #fff; border-radius: 14px; margin-bottom: 26px;">
+            <img src="assets/itsx-logo.png" alt="ITSX Commercial" style="height: 34px; width: auto; display: block; object-fit: contain;">
+          </span>
+          <h2 style="margin: 0 0 14px; color: #fff; font-weight: 800; font-size: clamp(26px, 3.4vw, 38px); line-height: 1.1; letter-spacing: -0.02em;">Let's talk about your vendor commitments.</h2>
+          <p style="margin: 0; color: rgba(225,234,248,0.78); font-size: 17px; line-height: 1.6;">Independent, senior advisors ready to help you unlock value from your most material technology deals.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+          <button onClick="{{ openModal }}" style="border: none; cursor: pointer; font-family: inherit; color: #fff; font-weight: 700; font-size: 17px; padding: 16px 30px; border-radius: 999px; background: linear-gradient(180deg, #3a79de, #2257bf); box-shadow: 0 12px 28px -10px rgba(47,111,214,0.7);" style-hover="background: linear-gradient(180deg, #4684e8, #2a62cc);">Get in touch</button>
+          <a href="mailto:hello@itsxcommercial.com" style="text-decoration: none; color: #cfe0ff; font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; gap: 9px;" style-hover="color: #fff;">
+            <span style="display: inline-flex; width: 34px; height: 34px; border-radius: 50%; align-items: center; justify-content: center; background: rgba(255,255,255,0.1);">{{ mailIcon }}</span>
+            hello@itsxcommercial.com
+          </a>
+        </div>
+      </div>
+      <div style="height: 1px; background: rgba(255,255,255,0.12); margin: 44px 0 24px;"></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
+        <span style="color: rgba(225,234,248,0.55); font-size: 14px;">© 2026 ITSX Commercial. All rights reserved.</span>
+        <div style="display: flex; gap: 22px;">
+          <a href="#about" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">About us</a>
+          <a href="#services" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">Services</a>
+          <a href="AI Management.dc.html#top" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">AI Services</a>
+          <a href="#customers" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">Customers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeModal }}" style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(13,20,38,0.55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); animation: itsxFade .18s ease;">
+      <div onClick="{{ stop }}" style="width: 100%; max-width: 480px; background: #fff; border-radius: 22px; padding: 38px; box-shadow: 0 40px 90px -30px rgba(13,20,38,0.6); position: relative;">
+        <button onClick="{{ closeModal }}" aria-label="Close" style="position: absolute; top: 18px; right: 18px; width: 34px; height: 34px; border-radius: 50%; border: none; cursor: pointer; background: #f0f4fa; color: #4a5668; font-size: 19px; line-height: 1; display: flex; align-items: center; justify-content: center;" style-hover="background: #e2e9f3;">×</button>
+        <h3 style="margin: 0 0 7px; font-weight: 800; font-size: 26px; letter-spacing: -0.02em; color: #1b2230;">Get in touch</h3>
+        <p style="margin: 0 0 24px; color: #5a6678; font-size: 15px; line-height: 1.5;">Send us a message and we'll reply from hello@itsxcommercial.com.</p>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <input value="{{ form.name }}" onInput="{{ onName }}" placeholder="Your name" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.4 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none;" style-focus="border-color: #2f6fd6; background: #fff;" />
+          <input value="{{ form.email }}" onInput="{{ onEmail }}" type="email" placeholder="Your email" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.4 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none;" style-focus="border-color: #2f6fd6; background: #fff;" />
+          <textarea value="{{ form.message }}" onInput="{{ onMessage }}" placeholder="How can we help?" rows="4" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.5 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none; resize: vertical;" style-focus="border-color: #2f6fd6; background: #fff;"></textarea>
+        </div>
+        <button onClick="{{ sendMessage }}" style="margin-top: 22px; width: 100%; padding: 15px; border-radius: 999px; border: none; cursor: pointer; color: #fff; font: 700 16px 'Hanken Grotesk', sans-serif; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 12px 28px -10px rgba(31,74,160,0.6);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">Send message</button>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 900}, &quot;defaultTab&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [0, 1, 2, 3, 4], &quot;default&quot;: 0, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Why ITSX box&quot;}, &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#2f6fd6&quot;, &quot;options&quot;: [&quot;#2f6fd6&quot;, &quot;#1f4aa0&quot;, &quot;#4a82bb&quot;, &quot;#2a6f9e&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Theme&quot;}}">
+class Component extends DCLogic {
+  state = {
+    active: null, modalOpen: false, name: '', email: '', message: '',
+    isMobile: typeof window !== 'undefined' && window.innerWidth <= 760,
+    mobileMenuOpen: false,
+  };
+
+  componentDidMount() {
+    this.handleResize = () => {
+      const isMobile = window.innerWidth <= 760;
+      this.setState(s => (s.isMobile === isMobile ? null : { isMobile, mobileMenuOpen: isMobile ? s.mobileMenuOpen : false }));
+    };
+    window.addEventListener('resize', this.handleResize);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  toggleMenu = () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen }));
+  closeMenu = () => this.setState({ mobileMenuOpen: false });
+  openModalFromMenu = () => this.setState({ mobileMenuOpen: false, modalOpen: true });
+
+  openModal = () => this.setState({ modalOpen: true });
+  closeModal = () => this.setState({ modalOpen: false });
+  sendMessage = () => {
+    const { name, email, message } = this.state;
+    const subject = 'Website enquiry' + (name ? ' from ' + name : '');
+    fetch('https://formsubmit.co/ajax/dw@itsxassure.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+        _subject: subject,
+        _cc: 'ag@itsxassure.com,rl@itsxassure.com',
+        _template: 'table',
+      }),
+    }).catch(() => {});
+    this.setState({ modalOpen: false, name: '', email: '', message: '' });
+  };
+
+  icon(paths, size) {
+    return React.createElement(
+      'svg',
+      { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round', width: size || 20, height: size || 20, style: { display: 'block' } },
+      paths.map((d, i) => React.createElement('path', { key: i, d }))
+    );
+  }
+
+  renderVals() {
+    const accent = this.props.accentColor || '#2f6fd6';
+    const defaultTab = Number.isInteger(this.props.defaultTab) ? this.props.defaultTab : 0;
+    const active = this.state.active == null ? defaultTab : this.state.active;
+
+    const ICONS = {
+      health: ['M3 12h3.5l1.8 5 3.2-10 2 6 1.6-3h3.9'],
+      renew: ['M20.5 12a8.5 8.5 0 1 1-2.6-6.1', 'M20.5 4v4.5H16'],
+      tender: ['M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z', 'm20.5 20.5-4.3-4.3'],
+      opp: ['M3 16.5 9.5 10l3.5 3.5L21 6', 'M15 6h6v6'],
+      gov: ['M12 3 5 6v5.5c0 4.2 3 7.4 7 9 4-1.6 7-4.8 7-9V6l-7-3Z', 'm9 12 2 2 4-4'],
+    };
+
+    const data = [
+      { key: 'chc', icon: 'health', label: 'Contract Health Check', heading: 'Contract Health Check',
+        body: [
+          'A rapid, independent review of your existing vendor agreements — surfacing hidden cost, over-commitment and renewal exposure before any decision is made.',
+          'You walk away with a clear commercial baseline and a prioritised list of where value is genuinely at risk.'
+        ], tags: ['Risk review', 'Cost baseline'] },
+      { key: 'rns', icon: 'renew', label: 'Renewal, Negotiation & SoW Support', heading: 'Renewal, Negotiation & SoW Support',
+        body: [
+          'Hands-on support through renewals, negotiations and statements of work, ensuring every commitment is priced, structured and timed to your advantage.',
+          'We sit firmly on your side of the table to hold vendors to genuine market terms.'
+        ], tags: ['Negotiation', 'Renewals', 'SoW'] },
+      { key: 'rfp', icon: 'tender', label: 'RFP & Tender Support', heading: 'RFP & Tender Support',
+        body: [
+          'End-to-end guidance through competitive tenders — from requirements and evaluation criteria through to scoring and final selection.',
+          'Structured to create real market tension and a defensible, fully auditable decision.'
+        ], tags: ['Tender', 'Evaluation'] },
+      { key: 'opp', icon: 'opp', label: 'Opportunity Assessment', heading: 'Opportunity Assessment',
+        body: [
+          'A focused analysis of where value is being left on the table across your vendor portfolio, quantifying the savings and improvements within reach.',
+          'Clear, evidence-based numbers you can take straight to the board.'
+        ], tags: ['Savings', 'Portfolio'] },
+      { key: 'cga', icon: 'gov', label: 'Commercial Governance & Assurance', heading: 'Commercial Governance & Assurance',
+        body: [
+          'Ongoing oversight and assurance frameworks that keep vendor commitments compliant, controlled and aligned to your commercial objectives.',
+          'Confidence that value secured at signature is value actually realised over the life of the deal.'
+        ], tags: ['Governance', 'Assurance'] },
+    ];
+
+    const tabs = data.map((t, i) => {
+      const isActive = i === active;
+      return {
+        key: t.key,
+        label: t.label,
+        icon: this.icon(ICONS[t.icon], 19),
+        onSelect: () => this.setState({ active: i }),
+        btnStyle: {
+          display: 'flex', alignItems: 'center', gap: '13px', width: '100%', textAlign: 'left',
+          padding: '15px 16px', borderRadius: '14px', cursor: 'pointer',
+          font: "600 15.5px/1.25 'Hanken Grotesk', sans-serif", transition: 'all .2s ease',
+          border: isActive ? '1px solid rgba(130,175,240,0.65)' : '1px solid rgba(255,255,255,0.10)',
+          background: isActive ? `linear-gradient(180deg, ${accent}, #1f4aa0)` : 'rgba(255,255,255,0.035)',
+          color: isActive ? '#fff' : 'rgba(229,237,250,0.74)',
+          boxShadow: isActive ? '0 12px 30px -10px rgba(40,110,220,0.65)' : 'none',
+        },
+        iconWrapStyle: {
+          display: 'flex', width: '34px', height: '34px', borderRadius: '10px',
+          alignItems: 'center', justifyContent: 'center', flex: '0 0 auto',
+          background: isActive ? 'rgba(255,255,255,0.20)' : 'rgba(255,255,255,0.06)',
+          color: isActive ? '#fff' : '#cfe0ff',
+        },
+      };
+    });
+
+    const at = data[active];
+    const isMobile = this.state.isMobile;
+
+    return {
+      isMobile,
+      isDesktop: !isMobile,
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      openModalFromMenu: this.openModalFromMenu,
+      menuIcon: this.state.mobileMenuOpen
+        ? this.icon(['M6 6l12 12', 'M18 6l-12 12'], 19)
+        : this.icon(['M4 6h16', 'M4 12h16', 'M4 18h16'], 19),
+      tabsGridStyle: {
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : 'minmax(280px, 420px) 1fr',
+        gap: isMobile ? '28px' : 'clamp(28px, 4vw, 64px)',
+        alignItems: 'start',
+      },
+      custScale: isMobile ? 0.5 : 1,
+      vendorScale: isMobile ? 0.5 : 1,
+      tabs,
+      activeTab: {
+        key: at.key,
+        heading: at.heading,
+        body: at.body,
+        tags: at.tags,
+        bigIcon: this.icon(ICONS[at.icon], 24),
+      },
+      mailIcon: this.icon(['M4 6h16v12H4z', 'm4 7 8 6 8-6'], 16),
+      modalOpen: this.state.modalOpen,
+      openModal: this.openModal,
+      closeModal: this.closeModal,
+      sendMessage: this.sendMessage,
+      stop: (e) => e.stopPropagation(),
+      form: { name: this.state.name, email: this.state.email, message: this.state.message },
+      onName: (e) => this.setState({ name: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onMessage: (e) => this.setState({ message: e.target.value }),
+    };
+  }
+}
+</script>
+</body>
+</html>

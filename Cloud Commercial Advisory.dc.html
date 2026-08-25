@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; -webkit-font-smoothing: antialiased; }
+  @keyframes itsxFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .itsx-nav-item { position: relative; }
+  .itsx-nav-dropdown { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-6px); min-width: 190px; padding: 8px; background: #fff; border: 1px solid rgba(27,34,48,0.08); border-radius: 14px; box-shadow: 0 18px 40px -20px rgba(22,48,110,0.35); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .15s ease, transform .15s ease; z-index: 60; }
+  .itsx-nav-item:hover .itsx-nav-dropdown, .itsx-nav-item:focus-within .itsx-nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+</style>
+</helmet>
+
+<div style="font-family: 'Hanken Grotesk', system-ui, sans-serif; color: #1b2230; min-height: 100vh; overflow-x: hidden; position: relative; background: radial-gradient(40% 22% at 100% 5%, rgba(58,86,228,0.82) 0%, rgba(58,86,228,0.30) 42%, rgba(58,86,228,0) 70%), radial-gradient(36% 22% at 103% 22%, rgba(72,102,238,0.60) 0%, rgba(72,102,238,0) 68%), radial-gradient(42% 16% at -2% 13%, rgba(66,96,232,0.74) 0%, rgba(66,96,232,0.26) 42%, rgba(66,96,232,0) 70%), radial-gradient(40% 13% at 8% 19%, rgba(96,128,240,0.40) 0%, rgba(96,128,240,0) 66%), radial-gradient(46% 22% at 96% 50%, rgba(66,96,232,0.40) 0%, rgba(66,96,232,0) 70%), radial-gradient(46% 20% at 2% 42%, rgba(96,128,240,0.32) 0%, rgba(96,128,240,0) 66%), radial-gradient(52% 22% at 92% 76%, rgba(72,102,238,0.40) 0%, rgba(72,102,238,0) 70%), radial-gradient(58% 22% at 14% 70%, rgba(80,110,235,0.34) 0%, rgba(80,110,235,0) 68%), radial-gradient(60% 22% at 50% 94%, rgba(74,104,236,0.42) 0%, rgba(74,104,236,0) 70%), linear-gradient(180deg, #f4f7fe 0%, #eaf0fd 40%, #e3ebfc 72%, #dbe6fb 100%);">
+
+  <!-- ============ HEADER BANNER ============ -->
+  <header style="position: sticky; top: 18px; z-index: 50; padding: 0 24px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 9px 12px 9px 14px; background: rgba(255,255,255,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(27,34,48,0.07); border-radius: 999px; box-shadow: 0 12px 34px -16px rgba(22,48,110,0.28);">
+      <a href="ITSX Commercial.dc.html#top" style="display: flex; align-items: center; flex: 0 0 auto;">
+        <img src="assets/itsx-logo.png" alt="ITSX Commercial" style="height: 44px; width: auto; display: block; object-fit: contain; mix-blend-mode: multiply;">
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display: flex; align-items: center; gap: 6px; flex: 1 1 auto; justify-content: center;">
+          <a href="ITSX Commercial.dc.html#about" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">About us</a>
+          <div class="itsx-nav-item">
+            <a href="ITSX Commercial.dc.html#services" style="text-decoration: none; color: #1f4aa0; font-weight: 700; font-size: 15px; padding: 9px 16px; border-radius: 999px; background: rgba(47,111,214,0.08); display: inline-block;">Services</a>
+            <div class="itsx-nav-dropdown">
+              <a href="AI Management.dc.html#top" style="display: block; text-decoration: none; color: #344056; font-weight: 600; font-size: 14px; padding: 10px 12px; border-radius: 10px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">AI Services</a>
+              <a href="Cloud Commercial Advisory.dc.html#top" style="display: block; text-decoration: none; color: #1f4aa0; font-weight: 700; font-size: 14px; padding: 10px 12px; border-radius: 10px; background: rgba(47,111,214,0.08);">Cloud Advisory</a>
+            </div>
+          </div>
+          <a href="ITSX Commercial.dc.html#customers" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Customers</a>
+        </nav>
+        <button onClick="{{ openModal }}" style="flex: 0 0 auto; border: none; cursor: pointer; font-family: inherit; color: #fff; font-weight: 700; font-size: 15px; padding: 11px 22px; border-radius: 999px; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 8px 20px -8px rgba(31,74,160,0.7);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">Get in touch</button>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMenu }}" aria-label="Menu" style="flex: 0 0 auto; border: none; cursor: pointer; width: 42px; height: 42px; border-radius: 999px; background: rgba(47,111,214,0.08); color: #1f4aa0; display: flex; align-items: center; justify-content: center;">{{ menuIcon }}</button>
+      </sc-if>
+    </div>
+    <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 1180px; margin: 10px auto 0; padding: 12px; background: rgba(255,255,255,0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(27,34,48,0.07); border-radius: 20px; box-shadow: 0 12px 34px -16px rgba(22,48,110,0.28); display: flex; flex-direction: column; gap: 4px;">
+        <a href="ITSX Commercial.dc.html#about" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">About us</a>
+        <a href="ITSX Commercial.dc.html#services" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Services</a>
+        <a href="AI Management.dc.html#top" onClick="{{ closeMenu }}" style="text-decoration: none; color: #4a5668; font-weight: 600; font-size: 15px; padding: 10px 14px 10px 30px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">AI Services</a>
+        <a href="Cloud Commercial Advisory.dc.html#top" onClick="{{ closeMenu }}" style="text-decoration: none; color: #1f4aa0; font-weight: 700; font-size: 15px; padding: 10px 14px 10px 30px; border-radius: 12px; background: rgba(47,111,214,0.08);">Cloud Advisory</a>
+        <a href="ITSX Commercial.dc.html#customers" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Customers</a>
+        <button onClick="{{ openModalFromMenu }}" style="margin-top: 6px; border: none; cursor: pointer; font-family: inherit; color: #fff; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 999px; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 8px 20px -8px rgba(31,74,160,0.7);">Get in touch</button>
+      </div>
+    </sc-if>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" style="max-width: 1000px; margin: 0 auto; padding: 52px 24px 36px; text-align: center;">
+    <div style="display: inline-flex; align-items: center; gap: 9px; padding: 7px 16px; border-radius: 999px; background: rgba(47,111,214,0.08); border: 1px solid rgba(47,111,214,0.16); color: #1f4aa0; font-weight: 600; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 28px;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background: #2f6fd6;"></span>
+      Cloud Advisory
+    </div>
+    <h1 style="margin: 0; font-weight: 800; font-size: clamp(40px, 5.6vw, 68px); line-height: 1.04; letter-spacing: -0.025em;">
+      <span style="display: block; color: #1b2230;">Take control of your</span>
+      <span style="display: block; color: #2f6fd6;">cloud economics.</span>
+    </h1>
+    <p style="margin: 22px auto 0; max-width: 620px; font-size: clamp(17px, 2vw, 20px); line-height: 1.5; color: #1f4aa0; font-weight: 700;">
+      Optimise your cloud spend. Benchmark your rates. Strengthen your negotiating position.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 30px;">
+      <a href="#cost-billing" style="display: inline-flex; align-items: center; gap: 9px; text-decoration: none; padding: 10px 20px 10px 14px; border-radius: 999px; background: rgba(47,111,214,0.08); border: 1px solid rgba(47,111,214,0.16); color: #1f4aa0; font-weight: 700; font-size: 16px;" style-hover="background: rgba(47,111,214,0.14); border-color: rgba(47,111,214,0.32);">
+        <span style="font-size: 18px;">📊</span> Cost &amp; Billing
+      </a>
+      <a href="#benchmarking-strategy" style="display: inline-flex; align-items: center; gap: 9px; text-decoration: none; padding: 10px 20px 10px 14px; border-radius: 999px; background: rgba(47,111,214,0.08); border: 1px solid rgba(47,111,214,0.16); color: #1f4aa0; font-weight: 700; font-size: 16px;" style-hover="background: rgba(47,111,214,0.14); border-color: rgba(47,111,214,0.32);">
+        <span style="font-size: 18px;">⚖️</span> Benchmarking &amp; Strategy
+      </a>
+      <a href="#negotiation-governance" style="display: inline-flex; align-items: center; gap: 9px; text-decoration: none; padding: 10px 20px 10px 14px; border-radius: 999px; background: rgba(47,111,214,0.08); border: 1px solid rgba(47,111,214,0.16); color: #1f4aa0; font-weight: 700; font-size: 16px;" style-hover="background: rgba(47,111,214,0.14); border-color: rgba(47,111,214,0.32);">
+        <span style="font-size: 18px;">🤝</span> Negotiation &amp; Governance
+      </a>
+    </div>
+    <p style="margin: 28px auto 0; max-width: 620px; font-size: clamp(17px, 2vw, 20px); line-height: 1.6; color: #4a5668; font-weight: 400;">
+      Independent support to understand, optimise and negotiate your cloud commitments across every major provider.
+    </p>
+    <div style="display: flex; gap: 14px; justify-content: center; margin-top: 38px; flex-wrap: wrap;">
+      <button onClick="{{ openModal }}" style="border: none; cursor: pointer; font-family: inherit; color: #fff; font-weight: 700; font-size: 16px; padding: 15px 30px; border-radius: 999px; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 12px 28px -10px rgba(31,74,160,0.65);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">Get in touch</button>
+      <a href="#cost-billing" style="text-decoration: none; color: #1f4aa0; font-weight: 700; font-size: 16px; padding: 15px 30px; border-radius: 999px; background: #fff; border: 1px solid rgba(27,34,48,0.1);" style-hover="border-color: rgba(47,111,214,0.4);">Explore the services</a>
+    </div>
+  </section>
+
+  <!-- ============ SECTION: COST & BILLING ============ -->
+  <section id="cost-billing" style="max-width: 1180px; margin: 0 auto; padding: 26px 24px 6px;">
+    <div style="position: relative; border-radius: 28px; overflow: hidden; padding: clamp(18px, 2.6vw, 30px); background: radial-gradient(120% 140% at 100% 0%, #2a5db8 0%, #16315f 46%, #0d1426 100%); box-shadow: 0 30px 70px -30px rgba(13,20,38,0.7);">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="display: inline-flex; width: 40px; height: 40px; border-radius: 10px; align-items: center; justify-content: center; flex: 0 0 auto; background: rgba(255,255,255,0.14); font-size: 18px;">📊</span>
+        <h2 style="margin: 0; font-weight: 800; font-size: clamp(22px, 2.8vw, 30px); line-height: 1.1; letter-spacing: -0.02em; color: #fff;">Cost &amp; Billing</h2>
+      </div>
+      <div style="color: rgba(225,234,248,0.6); font-weight: 700; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">How it works: pick a service</div>
+      <div style="{{ tabsGridStyle }}">
+        <div style="display: flex; flex-direction: column; gap: 7px;">
+          <sc-for list="{{ costPanel.tabs }}" as="tab" hint-placeholder-count="2">
+            <button onClick="{{ tab.onSelect }}" style="{{ tab.btnStyle }}">
+              <span style="{{ tab.iconWrapStyle }}">{{ tab.icon }}</span>
+              <span style="flex: 1 1 auto;">{{ tab.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 18px; min-height: 150px;" key="{{ costPanel.activeTab.key }}">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <span style="display: inline-flex; width: 32px; height: 32px; border-radius: 9px; align-items: center; justify-content: center; flex: 0 0 auto; background: rgba(255,255,255,0.12); font-size: 15px;">{{ costPanel.activeTab.bigIcon }}</span>
+            <h4 style="margin: 0; color: #fff; font-weight: 700; font-size: 16px;">{{ costPanel.activeTab.heading }}</h4>
+          </div>
+          <p style="margin: 0; color: rgba(225,234,248,0.82); font-size: 13.5px; line-height: 1.55;">{{ costPanel.activeTab.body }}</p>
+        </div>
+      </div>
+
+      <div style="height: 1px; background: rgba(255,255,255,0.12); margin: 22px 0 16px;"></div>
+
+      <div style="color: rgba(225,234,248,0.6); font-weight: 700; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Across every major provider</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px 10px; text-align: center;">
+          <div style="color: #fff; font-weight: 800; font-size: 18px;">AWS</div>
+          <div style="color: rgba(225,234,248,0.65); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 4px;">Cost &amp; Usage Reports</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px 10px; text-align: center;">
+          <div style="color: #fff; font-weight: 800; font-size: 18px;">Azure</div>
+          <div style="color: rgba(225,234,248,0.65); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 4px;">Cost Management + Billing</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px 10px; text-align: center;">
+          <div style="color: #fff; font-weight: 800; font-size: 18px;">GCP</div>
+          <div style="color: rgba(225,234,248,0.65); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 4px;">Billing Export &amp; BigQuery</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION: BENCHMARKING & STRATEGY ============ -->
+  <section id="benchmarking-strategy" style="max-width: 1180px; margin: 0 auto; padding: 26px 24px 6px;">
+    <div style="position: relative; border-radius: 28px; overflow: hidden; padding: clamp(18px, 2.6vw, 30px); background: radial-gradient(120% 140% at 100% 0%, #2a5db8 0%, #16315f 46%, #0d1426 100%); box-shadow: 0 30px 70px -30px rgba(13,20,38,0.7);">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="display: inline-flex; width: 40px; height: 40px; border-radius: 10px; align-items: center; justify-content: center; flex: 0 0 auto; background: rgba(255,255,255,0.14); font-size: 18px;">⚖️</span>
+        <h2 style="margin: 0; font-weight: 800; font-size: clamp(22px, 2.8vw, 30px); line-height: 1.1; letter-spacing: -0.02em; color: #fff;">Benchmarking &amp; Strategy</h2>
+      </div>
+      <div style="color: rgba(225,234,248,0.6); font-weight: 700; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">How it works: pick a service</div>
+      <div style="{{ tabsGridStyle }}">
+        <div style="display: flex; flex-direction: column; gap: 7px;">
+          <sc-for list="{{ benchmarkPanel.tabs }}" as="tab" hint-placeholder-count="2">
+            <button onClick="{{ tab.onSelect }}" style="{{ tab.btnStyle }}">
+              <span style="{{ tab.iconWrapStyle }}">{{ tab.icon }}</span>
+              <span style="flex: 1 1 auto;">{{ tab.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 18px; min-height: 150px;" key="{{ benchmarkPanel.activeTab.key }}">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <span style="display: inline-flex; width: 32px; height: 32px; border-radius: 9px; align-items: center; justify-content: center; flex: 0 0 auto; background: rgba(255,255,255,0.12); font-size: 15px;">{{ benchmarkPanel.activeTab.bigIcon }}</span>
+            <h4 style="margin: 0; color: #fff; font-weight: 700; font-size: 16px;">{{ benchmarkPanel.activeTab.heading }}</h4>
+          </div>
+          <p style="margin: 0; color: rgba(225,234,248,0.82); font-size: 13.5px; line-height: 1.55;">{{ benchmarkPanel.activeTab.body }}</p>
+        </div>
+      </div>
+
+      <div style="height: 1px; background: rgba(255,255,255,0.12); margin: 22px 0 16px;"></div>
+
+      <div style="color: rgba(225,234,248,0.6); font-weight: 700; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">Why it matters</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px 12px; text-align: center;">
+          <div style="color: #fff; font-weight: 800; font-size: 18px;">Independent</div>
+          <div style="color: rgba(225,234,248,0.7); font-size: 11px; font-weight: 600; margin-top: 5px; line-height: 1.35;">vendor-agnostic rate and discount benchmarking</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px 12px; text-align: center;">
+          <div style="color: #fff; font-weight: 800; font-size: 18px;">Right-sized</div>
+          <div style="color: rgba(225,234,248,0.7); font-size: 11px; font-weight: 600; margin-top: 5px; line-height: 1.35;">commitment level modelling against actual consumption</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px 12px; text-align: center;">
+          <div style="color: #fff; font-weight: 800; font-size: 18px;">Flexible</div>
+          <div style="color: rgba(225,234,248,0.7); font-size: 11px; font-weight: 600; margin-top: 5px; line-height: 1.35;">consumption strategy built around your roadmap, not the vendor's</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION: NEGOTIATION & GOVERNANCE ============ -->
+  <section id="negotiation-governance" style="max-width: 1180px; margin: 0 auto; padding: 26px 24px 26px;">
+    <div style="position: relative; border-radius: 28px; overflow: hidden; padding: clamp(18px, 2.6vw, 30px); background: radial-gradient(120% 140% at 100% 0%, #2a5db8 0%, #16315f 46%, #0d1426 100%); box-shadow: 0 30px 70px -30px rgba(13,20,38,0.7);">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="display: inline-flex; width: 40px; height: 40px; border-radius: 10px; align-items: center; justify-content: center; flex: 0 0 auto; background: rgba(255,255,255,0.14); font-size: 18px;">🤝</span>
+        <h2 style="margin: 0; font-weight: 800; font-size: clamp(22px, 2.8vw, 30px); line-height: 1.1; letter-spacing: -0.02em; color: #fff;">Negotiation &amp; Governance</h2>
+      </div>
+      <div style="color: rgba(225,234,248,0.6); font-weight: 700; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">How it works: pick a service</div>
+      <div style="{{ tabsGridStyle }}">
+        <div style="display: flex; flex-direction: column; gap: 7px;">
+          <sc-for list="{{ negotiatePanel.tabs }}" as="tab" hint-placeholder-count="2">
+            <button onClick="{{ tab.onSelect }}" style="{{ tab.btnStyle }}">
+              <span style="{{ tab.iconWrapStyle }}">{{ tab.icon }}</span>
+              <span style="flex: 1 1 auto;">{{ tab.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 18px; min-height: 150px;" key="{{ negotiatePanel.activeTab.key }}">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <span style="display: inline-flex; width: 32px; height: 32px; border-radius: 9px; align-items: center; justify-content: center; flex: 0 0 auto; background: rgba(255,255,255,0.12); font-size: 15px;">{{ negotiatePanel.activeTab.bigIcon }}</span>
+            <h4 style="margin: 0; color: #fff; font-weight: 700; font-size: 16px;">{{ negotiatePanel.activeTab.heading }}</h4>
+          </div>
+          <p style="margin: 0; color: rgba(225,234,248,0.82); font-size: 13.5px; line-height: 1.55;">{{ negotiatePanel.activeTab.body }}</p>
+        </div>
+      </div>
+
+      <div style="height: 1px; background: rgba(255,255,255,0.12); margin: 22px 0 16px;"></div>
+
+      <div style="color: rgba(225,234,248,0.6); font-weight: 700; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;">What makes it different</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px 12px; text-align: center;">
+          <div style="color: #fff; font-weight: 800; font-size: 18px;">All Providers</div>
+          <div style="color: rgba(225,234,248,0.7); font-size: 11px; font-weight: 600; margin-top: 5px; line-height: 1.35;">AWS, Azure, GCP and beyond, negotiated on your terms</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px 12px; text-align: center;">
+          <div style="color: #fff; font-weight: 800; font-size: 18px;">Post-Signature</div>
+          <div style="color: rgba(225,234,248,0.7); font-size: 11px; font-weight: 600; margin-top: 5px; line-height: 1.35;">governance doesn't stop once the deal is signed</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px 12px; text-align: center;">
+          <div style="color: #fff; font-weight: 800; font-size: 18px;">Independent</div>
+          <div style="color: rgba(225,234,248,0.7); font-size: 11px; font-weight: 600; margin-top: 5px; line-height: 1.35;">market intelligence, not vendor-supplied sales data</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contact" style="padding: 8px 24px 48px;">
+    <div style="max-width: 780px; margin: 0 auto; position: relative; border-radius: 26px 8px 26px 8px; overflow: hidden; padding: clamp(36px, 5vw, 56px) clamp(24px, 5vw, 48px); background: linear-gradient(135deg, #2f6fd6 0%, #1f4aa0 55%, #12245c 100%); box-shadow: 0 30px 70px -34px rgba(13,20,38,0.55); border: 1px solid rgba(255,255,255,0.14); text-align: center;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #9fc1f2 50%, rgba(255,255,255,0) 100%);"></div>
+      <span style="display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 18px; background: #fff; border-radius: 12px; margin-bottom: 22px;">
+        <img src="assets/itsx-logo.png" alt="ITSX Commercial" style="height: 30px; width: auto; display: block; object-fit: contain;">
+      </span>
+      <h2 style="margin: 0 0 12px; color: #fff; font-weight: 800; font-size: clamp(24px, 3vw, 32px); line-height: 1.12; letter-spacing: -0.02em;">Let's talk about your cloud programme.</h2>
+      <p style="margin: 0 auto 26px; max-width: 460px; color: rgba(225,234,248,0.78); font-size: 15.5px; line-height: 1.55;">Independent, senior advisors ready to help you understand, optimise and negotiate your cloud commitments.</p>
+      <div style="display: flex; flex-direction: column; gap: 14px; align-items: center;">
+        <button onClick="{{ openModal }}" style="border: none; cursor: pointer; font-family: inherit; color: #1f4aa0; font-weight: 700; font-size: 16px; padding: 15px 32px; border-radius: 999px; background: #fff; box-shadow: 0 12px 28px -12px rgba(13,20,38,0.5);" style-hover="background: #eaf0fd;">Get in touch</button>
+        <a href="mailto:hello@itsxcommercial.com" style="text-decoration: none; color: #cfe0ff; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px;" style-hover="color: #fff;">
+          <span style="display: inline-flex; width: 30px; height: 30px; border-radius: 50%; align-items: center; justify-content: center; background: rgba(255,255,255,0.14);">{{ mailIcon }}</span>
+          hello@itsxcommercial.com
+        </a>
+      </div>
+      <div style="height: 1px; background: rgba(255,255,255,0.14); margin: 30px 0 18px;"></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center;">
+        <a href="ITSX Commercial.dc.html#about" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 13px; font-weight: 600;" style-hover="color: #fff;">About us</a>
+        <span style="color: rgba(225,234,248,0.3);">·</span>
+        <a href="ITSX Commercial.dc.html#services" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 13px; font-weight: 600;" style-hover="color: #fff;">Services</a>
+        <span style="color: rgba(225,234,248,0.3);">·</span>
+        <a href="ITSX Commercial.dc.html#customers" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 13px; font-weight: 600;" style-hover="color: #fff;">Customers</a>
+      </div>
+      <div style="margin-top: 14px; color: rgba(225,234,248,0.4); font-size: 12.5px;">© 2026 ITSX Commercial. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeModal }}" style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(13,20,38,0.55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); animation: itsxFade .18s ease;">
+      <div onClick="{{ stop }}" style="width: 100%; max-width: 480px; background: #fff; border-radius: 22px; padding: 38px; box-shadow: 0 40px 90px -30px rgba(13,20,38,0.6); position: relative;">
+        <button onClick="{{ closeModal }}" aria-label="Close" style="position: absolute; top: 18px; right: 18px; width: 34px; height: 34px; border-radius: 50%; border: none; cursor: pointer; background: #f0f4fa; color: #4a5668; font-size: 19px; line-height: 1; display: flex; align-items: center; justify-content: center;" style-hover="background: #e2e9f3;">×</button>
+        <h3 style="margin: 0 0 7px; font-weight: 800; font-size: 26px; letter-spacing: -0.02em; color: #1b2230;">Get in touch</h3>
+        <p style="margin: 0 0 24px; color: #5a6678; font-size: 15px; line-height: 1.5;">Send us a message and we'll reply from hello@itsxcommercial.com.</p>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <input value="{{ form.name }}" onInput="{{ onName }}" placeholder="Your name" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.4 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none;" style-focus="border-color: #2f6fd6; background: #fff;" />
+          <input value="{{ form.email }}" onInput="{{ onEmail }}" type="email" placeholder="Your email" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.4 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none;" style-focus="border-color: #2f6fd6; background: #fff;" />
+          <textarea value="{{ form.message }}" onInput="{{ onMessage }}" placeholder="How can we help?" rows="4" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.5 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none; resize: vertical;" style-focus="border-color: #2f6fd6; background: #fff;"></textarea>
+        </div>
+        <button onClick="{{ sendMessage }}" style="margin-top: 22px; width: 100%; padding: 15px; border-radius: 999px; border: none; cursor: pointer; color: #fff; font: 700 16px 'Hanken Grotesk', sans-serif; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 12px 28px -10px rgba(31,74,160,0.6);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">Send message</button>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 900}}">
+class Component extends DCLogic {
+  state = {
+    modalOpen: false, name: '', email: '', message: '',
+    isMobile: typeof window !== 'undefined' && window.innerWidth <= 760,
+    mobileMenuOpen: false,
+    activeCost: 0, activeBenchmark: 0, activeNegotiate: 0,
+  };
+
+  componentDidMount() {
+    this.handleResize = () => {
+      const isMobile = window.innerWidth <= 760;
+      this.setState(s => (s.isMobile === isMobile ? null : { isMobile, mobileMenuOpen: isMobile ? s.mobileMenuOpen : false }));
+    };
+    window.addEventListener('resize', this.handleResize);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  toggleMenu = () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen }));
+  closeMenu = () => this.setState({ mobileMenuOpen: false });
+  openModalFromMenu = () => this.setState({ mobileMenuOpen: false, modalOpen: true });
+
+  openModal = () => this.setState({ modalOpen: true });
+  closeModal = () => this.setState({ modalOpen: false });
+  sendMessage = () => {
+    const { name, email, message } = this.state;
+    const subject = 'Website enquiry' + (name ? ' from ' + name : '');
+    fetch('https://formsubmit.co/ajax/dw@itsxassure.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+        _subject: subject,
+        _cc: 'ag@itsxassure.com,rl@itsxassure.com',
+        _template: 'table',
+      }),
+    }).catch(() => {});
+    this.setState({ modalOpen: false, name: '', email: '', message: '' });
+  };
+
+  icon(paths, size) {
+    return React.createElement(
+      'svg',
+      { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round', width: size || 20, height: size || 20, style: { display: 'block' } },
+      paths.map((d, i) => React.createElement('path', { key: i, d }))
+    );
+  }
+
+  buildPanel(data, activeIdx, onSelect) {
+    const tabs = data.map((t, i) => {
+      const isActive = i === activeIdx;
+      return {
+        key: t.key,
+        label: t.label,
+        icon: t.icon,
+        onSelect: () => onSelect(i),
+        btnStyle: {
+          display: 'flex', alignItems: 'center', gap: '13px', width: '100%', textAlign: 'left',
+          padding: '15px 16px', borderRadius: '14px', cursor: 'pointer',
+          font: "600 15px/1.25 'Hanken Grotesk', sans-serif", transition: 'all .2s ease',
+          border: isActive ? '1px solid rgba(130,175,240,0.65)' : '1px solid rgba(255,255,255,0.10)',
+          background: isActive ? 'linear-gradient(180deg, #2f6fd6, #1f4aa0)' : 'rgba(255,255,255,0.035)',
+          color: isActive ? '#fff' : 'rgba(229,237,250,0.74)',
+          boxShadow: isActive ? '0 12px 30px -10px rgba(40,110,220,0.65)' : 'none',
+        },
+        iconWrapStyle: {
+          display: 'flex', width: '34px', height: '34px', borderRadius: '10px', fontSize: '16px',
+          alignItems: 'center', justifyContent: 'center', flex: '0 0 auto',
+          background: isActive ? 'rgba(255,255,255,0.20)' : 'rgba(255,255,255,0.06)',
+        },
+      };
+    });
+    const at = data[activeIdx];
+    return { tabs, activeTab: { key: at.key, heading: at.heading, body: at.body, bigIcon: at.icon } };
+  }
+
+  renderVals() {
+    const isMobile = this.state.isMobile;
+
+    const COST_DATA = [
+      { key: 'audit', icon: '🧾', label: 'Cloud Billing Audit', heading: 'Cloud Billing Audit', body: 'Identify billing errors, unused commitments, incorrect allocations, pricing anomalies, duplicate charges and opportunities to recover or reduce spend.' },
+      { key: 'optimisation', icon: '📉', label: 'Cloud Cost Optimisation', heading: 'Cloud Cost Optimisation', body: 'Reduce the cost of your existing consumption through rightsizing, commitment optimisation, discount optimisation and elimination of waste.' },
+    ];
+    const BENCHMARK_DATA = [
+      { key: 'benchmarking', icon: '📐', label: 'Commercial Benchmarking', heading: 'Cloud Commercial Benchmarking', body: 'Benchmark your effective cloud rates, discounts, commitments and commercial terms against the market.' },
+      { key: 'strategy', icon: '🧭', label: 'Commitment & Consumption Strategy', heading: 'Commitment & Consumption Strategy', body: "Determine what you should commit to, how much you should commit, and when, without unnecessarily locking the organisation into inflexible consumption commitments." },
+    ];
+    const NEGOTIATE_DATA = [
+      { key: 'negotiation', icon: '🤝', label: 'Supplier Negotiation', heading: 'Supplier Negotiation', body: 'Use independent market intelligence and detailed consumption analysis to negotiate better rates, discounts, credits, commitments and contractual flexibility.' },
+      { key: 'governance', icon: '🛡️', label: 'Ongoing Commercial Governance', heading: 'Ongoing Cloud Commercial Governance', body: 'Continue monitoring utilisation, commitment coverage, pricing and supplier performance after the deal has been signed.' },
+    ];
+
+    return {
+      isMobile,
+      isDesktop: !isMobile,
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      openModalFromMenu: this.openModalFromMenu,
+      menuIcon: this.state.mobileMenuOpen
+        ? this.icon(['M6 6l12 12', 'M18 6l-12 12'], 19)
+        : this.icon(['M4 6h16', 'M4 12h16', 'M4 18h16'], 19),
+      mailIcon: this.icon(['M4 6h16v12H4z', 'm4 7 8 6 8-6'], 16),
+      tabsGridStyle: {
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : 'minmax(220px, 300px) 1fr',
+        gap: isMobile ? '18px' : 'clamp(20px, 3vw, 36px)',
+        alignItems: 'start',
+      },
+      costPanel: this.buildPanel(COST_DATA, this.state.activeCost, (i) => this.setState({ activeCost: i })),
+      benchmarkPanel: this.buildPanel(BENCHMARK_DATA, this.state.activeBenchmark, (i) => this.setState({ activeBenchmark: i })),
+      negotiatePanel: this.buildPanel(NEGOTIATE_DATA, this.state.activeNegotiate, (i) => this.setState({ activeNegotiate: i })),
+      modalOpen: this.state.modalOpen,
+      openModal: this.openModal,
+      closeModal: this.closeModal,
+      sendMessage: this.sendMessage,
+      stop: (e) => e.stopPropagation(),
+      form: { name: this.state.name, email: this.state.email, message: this.state.message },
+      onName: (e) => this.setState({ name: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onMessage: (e) => this.setState({ message: e.target.value }),
+    };
+  }
+}
+</script>
+</body>
+</html>
