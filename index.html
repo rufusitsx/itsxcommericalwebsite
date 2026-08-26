@@ -33,6 +33,7 @@
           <a href="#about" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">About us</a>
           <a href="AI Management.dc.html#top" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">AI Management</a>
           <a href="Cloud Commercial Advisory.dc.html#top" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Cloud Advisory</a>
+          <a href="Tech Procurement.dc.html#top" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Tech Procurement</a>
           <a href="#customers" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 15px; padding: 9px 16px; border-radius: 999px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Customers</a>
         </nav>
         <button onClick="{{ openModal }}" style="flex: 0 0 auto; border: none; cursor: pointer; font-family: inherit; color: #fff; font-weight: 700; font-size: 15px; padding: 11px 22px; border-radius: 999px; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 8px 20px -8px rgba(31,74,160,0.7);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">Get in touch</button>
@@ -46,6 +47,7 @@
         <a href="#about" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">About us</a>
         <a href="AI Management.dc.html#top" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">AI Management</a>
         <a href="Cloud Commercial Advisory.dc.html#top" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Cloud Advisory</a>
+        <a href="Tech Procurement.dc.html#top" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Tech Procurement</a>
         <a href="#customers" onClick="{{ closeMenu }}" style="text-decoration: none; color: #344056; font-weight: 600; font-size: 16px; padding: 12px 14px; border-radius: 12px;" style-hover="background: rgba(47,111,214,0.08); color: #1f4aa0;">Customers</a>
         <button onClick="{{ openModalFromMenu }}" style="margin-top: 6px; border: none; cursor: pointer; font-family: inherit; color: #fff; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 999px; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 8px 20px -8px rgba(31,74,160,0.7);">Get in touch</button>
       </div>
@@ -89,44 +91,23 @@
     </p>
   </section>
 
-  <!-- ============ THIRD SECTION — WHY ITSX COMMERCIAL ============ -->
+  <!-- ============ THIRD SECTION — OUR SERVICES ============ -->
   <section id="services" style="max-width: 1180px; margin: 0 auto; padding: 16px 24px 48px;">
     <div style="text-align: center; margin-bottom: 30px;">
       <div style="display: inline-block; padding: 6px 15px; border-radius: 999px; background: rgba(47,111,214,0.08); border: 1px solid rgba(47,111,214,0.16); color: #1f4aa0; font-weight: 600; font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 18px;">What we do</div>
-      <h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -0.02em; color: #1b2230;">Why ITSX Commercial</h2>
+      <h2 style="margin: 0; font-weight: 800; font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -0.02em; color: #1b2230;">Three ways we help</h2>
     </div>
 
     <div style="position: relative; border-radius: 28px; overflow: hidden; padding: clamp(28px, 4vw, 56px); background: radial-gradient(120% 140% at 100% 0%, #2a5db8 0%, #16315f 46%, #0d1426 100%); box-shadow: 0 30px 70px -30px rgba(13,20,38,0.7);">
-      <div style="{{ tabsGridStyle }}">
-
-        <!-- tabs -->
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-          <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
-            <button onClick="{{ tab.onSelect }}" style="{{ tab.btnStyle }}">
-              <span style="{{ tab.iconWrapStyle }}">{{ tab.icon }}</span>
-              <span style="flex: 1 1 auto;">{{ tab.label }}</span>
-            </button>
-          </sc-for>
-        </div>
-
-        <!-- panel -->
-        <div style="min-height: 320px;" key="{{ activeTab.key }}">
-          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
-            <span style="display: flex; width: 46px; height: 46px; border-radius: 12px; align-items: center; justify-content: center; flex: 0 0 auto; background: rgba(255,255,255,0.12); color: #cfe0ff;">{{ activeTab.bigIcon }}</span>
-            <h3 style="margin: 0; color: #fff; font-weight: 700; font-size: clamp(24px, 2.8vw, 34px); letter-spacing: -0.01em;">{{ activeTab.heading }}</h3>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 560px;">
-            <sc-for list="{{ activeTab.body }}" as="para" hint-placeholder-count="2">
-              <p style="margin: 0; color: rgba(225,234,248,0.82); font-size: clamp(16px, 1.7vw, 18px); line-height: 1.65;">{{ para }}</p>
-            </sc-for>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px;">
-            <sc-for list="{{ activeTab.tags }}" as="tag" hint-placeholder-count="2">
-              <span style="padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); color: #dce8fb; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;">{{ tag }}</span>
-            </sc-for>
-          </div>
-        </div>
-
+      <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+        <sc-for list="{{ serviceCards }}" as="card" hint-placeholder-count="3">
+          <a href="{{ card.href }}" style="flex: 1 1 280px; min-width: 240px; text-decoration: none; display: flex; flex-direction: column; padding: 26px; border-radius: 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);" style-hover="background: rgba(255,255,255,0.09); border-color: rgba(130,175,240,0.5);">
+            <span style="display: flex; width: 44px; height: 44px; border-radius: 12px; align-items: center; justify-content: center; flex: 0 0 auto; background: rgba(255,255,255,0.12); font-size: 21px; margin-bottom: 18px;">{{ card.icon }}</span>
+            <h3 style="margin: 0 0 10px; color: #fff; font-weight: 700; font-size: 21px; letter-spacing: -0.01em;">{{ card.heading }}</h3>
+            <p style="margin: 0 0 20px; flex: 1 1 auto; color: rgba(225,234,248,0.8); font-size: 14.5px; line-height: 1.6;">{{ card.body }}</p>
+            <span style="color: #cfe0ff; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">Learn more →</span>
+          </a>
+        </sc-for>
       </div>
     </div>
   </section>
@@ -273,6 +254,8 @@
           <a href="#about" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">About us</a>
           <a href="#services" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">Services</a>
           <a href="AI Management.dc.html#top" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">AI Management</a>
+          <a href="Cloud Commercial Advisory.dc.html#top" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">Cloud Advisory</a>
+          <a href="Tech Procurement.dc.html#top" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">Tech Procurement</a>
           <a href="#customers" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 14px; font-weight: 600;" style-hover="color: #fff;">Customers</a>
         </div>
       </div>
@@ -297,10 +280,10 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 900}, &quot;defaultTab&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [0, 1, 2, 3, 4], &quot;default&quot;: 0, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Why ITSX box&quot;}, &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#2f6fd6&quot;, &quot;options&quot;: [&quot;#2f6fd6&quot;, &quot;#1f4aa0&quot;, &quot;#4a82bb&quot;, &quot;#2a6f9e&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Theme&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 900}}">
 class Component extends DCLogic {
   state = {
-    active: null, modalOpen: false, name: '', email: '', message: '',
+    modalOpen: false, name: '', email: '', message: '',
     isMobile: typeof window !== 'undefined' && window.innerWidth <= 760,
     mobileMenuOpen: false,
   };
@@ -349,73 +332,16 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const accent = this.props.accentColor || '#2f6fd6';
-    const defaultTab = Number.isInteger(this.props.defaultTab) ? this.props.defaultTab : 0;
-    const active = this.state.active == null ? defaultTab : this.state.active;
-
-    const ICONS = {
-      health: ['M3 12h3.5l1.8 5 3.2-10 2 6 1.6-3h3.9'],
-      renew: ['M20.5 12a8.5 8.5 0 1 1-2.6-6.1', 'M20.5 4v4.5H16'],
-      tender: ['M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z', 'm20.5 20.5-4.3-4.3'],
-      opp: ['M3 16.5 9.5 10l3.5 3.5L21 6', 'M15 6h6v6'],
-      gov: ['M12 3 5 6v5.5c0 4.2 3 7.4 7 9 4-1.6 7-4.8 7-9V6l-7-3Z', 'm9 12 2 2 4-4'],
-    };
-
-    const data = [
-      { key: 'chc', icon: 'health', label: 'Contract Health Check', heading: 'Contract Health Check',
-        body: [
-          'A rapid, independent review of your existing vendor agreements — surfacing hidden cost, over-commitment and renewal exposure before any decision is made.',
-          'You walk away with a clear commercial baseline and a prioritised list of where value is genuinely at risk.'
-        ], tags: ['Risk review', 'Cost baseline'] },
-      { key: 'rns', icon: 'renew', label: 'Renewal, Negotiation & SoW Support', heading: 'Renewal, Negotiation & SoW Support',
-        body: [
-          'Hands-on support through renewals, negotiations and statements of work, ensuring every commitment is priced, structured and timed to your advantage.',
-          'We sit firmly on your side of the table to hold vendors to genuine market terms.'
-        ], tags: ['Negotiation', 'Renewals', 'SoW'] },
-      { key: 'rfp', icon: 'tender', label: 'RFP & Tender Support', heading: 'RFP & Tender Support',
-        body: [
-          'End-to-end guidance through competitive tenders — from requirements and evaluation criteria through to scoring and final selection.',
-          'Structured to create real market tension and a defensible, fully auditable decision.'
-        ], tags: ['Tender', 'Evaluation'] },
-      { key: 'opp', icon: 'opp', label: 'Opportunity Assessment', heading: 'Opportunity Assessment',
-        body: [
-          'A focused analysis of where value is being left on the table across your vendor portfolio, quantifying the savings and improvements within reach.',
-          'Clear, evidence-based numbers you can take straight to the board.'
-        ], tags: ['Savings', 'Portfolio'] },
-      { key: 'cga', icon: 'gov', label: 'Commercial Governance & Assurance', heading: 'Commercial Governance & Assurance',
-        body: [
-          'Ongoing oversight and assurance frameworks that keep vendor commitments compliant, controlled and aligned to your commercial objectives.',
-          'Confidence that value secured at signature is value actually realised over the life of the deal.'
-        ], tags: ['Governance', 'Assurance'] },
-    ];
-
-    const tabs = data.map((t, i) => {
-      const isActive = i === active;
-      return {
-        key: t.key,
-        label: t.label,
-        icon: this.icon(ICONS[t.icon], 19),
-        onSelect: () => this.setState({ active: i }),
-        btnStyle: {
-          display: 'flex', alignItems: 'center', gap: '13px', width: '100%', textAlign: 'left',
-          padding: '15px 16px', borderRadius: '14px', cursor: 'pointer',
-          font: "600 15.5px/1.25 'Hanken Grotesk', sans-serif", transition: 'all .2s ease',
-          border: isActive ? '1px solid rgba(130,175,240,0.65)' : '1px solid rgba(255,255,255,0.10)',
-          background: isActive ? `linear-gradient(180deg, ${accent}, #1f4aa0)` : 'rgba(255,255,255,0.035)',
-          color: isActive ? '#fff' : 'rgba(229,237,250,0.74)',
-          boxShadow: isActive ? '0 12px 30px -10px rgba(40,110,220,0.65)' : 'none',
-        },
-        iconWrapStyle: {
-          display: 'flex', width: '34px', height: '34px', borderRadius: '10px',
-          alignItems: 'center', justifyContent: 'center', flex: '0 0 auto',
-          background: isActive ? 'rgba(255,255,255,0.20)' : 'rgba(255,255,255,0.06)',
-          color: isActive ? '#fff' : '#cfe0ff',
-        },
-      };
-    });
-
-    const at = data[active];
     const isMobile = this.state.isMobile;
+
+    const SERVICE_CARDS = [
+      { key: 'ai', icon: '🤖', href: 'AI Management.dc.html#top', heading: 'AI Management',
+        body: 'Visibility into what you spend on AI, how well governed it is, and how confidently your people use it.' },
+      { key: 'cloud', icon: '☁️', href: 'Cloud Commercial Advisory.dc.html#top', heading: 'Cloud Advisory',
+        body: 'Understand, optimise and negotiate your cloud commitments across every major provider.' },
+      { key: 'proc', icon: '🧾', href: 'Tech Procurement.dc.html#top', heading: 'Tech Procurement & Commercial',
+        body: 'Independent support across contract health, sourcing, negotiation, opportunity assessment and ongoing governance.' },
+    ];
 
     return {
       isMobile,
@@ -427,22 +353,9 @@ class Component extends DCLogic {
       menuIcon: this.state.mobileMenuOpen
         ? this.icon(['M6 6l12 12', 'M18 6l-12 12'], 19)
         : this.icon(['M4 6h16', 'M4 12h16', 'M4 18h16'], 19),
-      tabsGridStyle: {
-        display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : 'minmax(280px, 420px) 1fr',
-        gap: isMobile ? '28px' : 'clamp(28px, 4vw, 64px)',
-        alignItems: 'start',
-      },
       custScale: isMobile ? 0.5 : 1,
       vendorScale: isMobile ? 0.5 : 1,
-      tabs,
-      activeTab: {
-        key: at.key,
-        heading: at.heading,
-        body: at.body,
-        tags: at.tags,
-        bigIcon: this.icon(ICONS[at.icon], 24),
-      },
+      serviceCards: SERVICE_CARDS,
       mailIcon: this.icon(['M4 6h16v12H4z', 'm4 7 8 6 8-6'], 16),
       modalOpen: this.state.modalOpen,
       openModal: this.openModal,
