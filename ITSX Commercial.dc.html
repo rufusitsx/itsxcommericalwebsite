@@ -217,10 +217,10 @@
         <img src="assets/v-adobe.png" alt="Adobe" style="height: calc(60px * {{ vendorScale }}); max-width: 175px; width: auto; object-fit: contain; display: block;">
         <img src="assets/v-salesforce.png" alt="Salesforce" style="height: calc(60px * {{ vendorScale }}); max-width: 150px; width: auto; object-fit: contain; display: block;">
         <img src="assets/v-snowflake.png" alt="Snowflake" style="height: calc(60px * {{ vendorScale }}); max-width: 210px; width: auto; object-fit: contain; display: block;">
-        <img src="assets/v-openai.svg" alt="OpenAI" style="height: calc(40px * {{ vendorScale }}); max-width: 158px; width: auto; object-fit: contain; display: block;">
-        <img src="assets/v-gemini.svg" alt="Gemini" style="height: calc(40px * {{ vendorScale }}); max-width: 183px; width: auto; object-fit: contain; display: block;">
-        <img src="assets/v-meta.svg" alt="Meta" style="height: calc(40px * {{ vendorScale }}); max-width: 171px; width: auto; object-fit: contain; display: block;">
-        <img src="assets/v-grok.svg" alt="Grok" style="height: calc(40px * {{ vendorScale }}); max-width: 150px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-openai.svg" alt="OpenAI" style="height: calc(32px * {{ vendorScale }}); max-width: 126px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-gemini.svg" alt="Gemini" style="height: calc(32px * {{ vendorScale }}); max-width: 146px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-copilot.svg" alt="Microsoft Copilot" style="height: calc(32px * {{ vendorScale }}); max-width: 110px; width: auto; object-fit: contain; display: block;">
+        <img src="assets/v-grok.svg" alt="Grok" style="height: calc(32px * {{ vendorScale }}); max-width: 120px; width: auto; object-fit: contain; display: block;">
       </div>
     </div>
   </section>
@@ -282,13 +282,30 @@
       <div onClick="{{ stop }}" style="width: 100%; max-width: 480px; background: #fff; border-radius: 22px; padding: 38px; box-shadow: 0 40px 90px -30px rgba(13,20,38,0.6); position: relative;">
         <button onClick="{{ closeModal }}" aria-label="Close" style="position: absolute; top: 18px; right: 18px; width: 34px; height: 34px; border-radius: 50%; border: none; cursor: pointer; background: #f0f4fa; color: #4a5668; font-size: 19px; line-height: 1; display: flex; align-items: center; justify-content: center;" style-hover="background: #e2e9f3;">×</button>
         <h3 style="margin: 0 0 7px; font-weight: 800; font-size: 26px; letter-spacing: -0.02em; color: #1b2230;">Get in touch</h3>
-        <p style="margin: 0 0 24px; color: #5a6678; font-size: 15px; line-height: 1.5;">Send us a message and we'll reply from hello@itsxcommercial.com.</p>
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <input value="{{ form.name }}" onInput="{{ onName }}" placeholder="Your name" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.4 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none;" style-focus="border-color: #2f6fd6; background: #fff;" />
-          <input value="{{ form.email }}" onInput="{{ onEmail }}" type="email" placeholder="Your email" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.4 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none;" style-focus="border-color: #2f6fd6; background: #fff;" />
-          <textarea value="{{ form.message }}" onInput="{{ onMessage }}" placeholder="How can we help?" rows="4" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.5 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none; resize: vertical;" style-focus="border-color: #2f6fd6; background: #fff;"></textarea>
-        </div>
-        <button onClick="{{ sendMessage }}" style="margin-top: 22px; width: 100%; padding: 15px; border-radius: 999px; border: none; cursor: pointer; color: #fff; font: 700 16px 'Hanken Grotesk', sans-serif; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 12px 28px -10px rgba(31,74,160,0.6);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">Send message</button>
+
+        <sc-if value="{{ sendSuccess }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 8px 0 4px;">
+            <span style="display: flex; width: 52px; height: 52px; border-radius: 50%; align-items: center; justify-content: center; background: rgba(47,163,109,0.12); color: #1f8a4c; font-size: 24px;">✓</span>
+            <p style="margin: 0; color: #1b2230; font-weight: 800; font-size: 18px;">Message sent</p>
+            <p style="margin: 0; color: #5a6678; font-size: 15px; line-height: 1.5;">Thanks — we've received your message and will reply from hello@itsxcommercial.com shortly.</p>
+            <button onClick="{{ closeModal }}" style="margin-top: 12px; width: 100%; padding: 15px; border-radius: 999px; border: none; cursor: pointer; color: #fff; font: 700 16px 'Hanken Grotesk', sans-serif; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 12px 28px -10px rgba(31,74,160,0.6);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">Close</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <p style="margin: 0 0 24px; color: #5a6678; font-size: 15px; line-height: 1.5;">Send us a message and we'll reply from hello@itsxcommercial.com.</p>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <input value="{{ form.name }}" onInput="{{ onName }}" placeholder="Your name" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.4 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none;" style-focus="border-color: #2f6fd6; background: #fff;" />
+            <input value="{{ form.email }}" onInput="{{ onEmail }}" type="email" placeholder="Your email" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.4 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none;" style-focus="border-color: #2f6fd6; background: #fff;" />
+            <textarea value="{{ form.message }}" onInput="{{ onMessage }}" placeholder="How can we help?" rows="4" style="width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(27,34,48,0.14); font: 400 15px/1.5 'Hanken Grotesk', sans-serif; color: #1b2230; background: #f8fafd; outline: none; resize: vertical;" style-focus="border-color: #2f6fd6; background: #fff;"></textarea>
+          </div>
+
+          <sc-if value="{{ sendError }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: rgba(214,69,69,0.08); border: 1px solid rgba(214,69,69,0.2); color: #a63333; font-size: 13.5px; line-height: 1.5;">Something went wrong sending your message. Please try again, or email us directly at <a href="mailto:hello@itsxcommercial.com" style="color: #a63333; font-weight: 700;">hello@itsxcommercial.com</a>.</p>
+          </sc-if>
+
+          <button onClick="{{ sendMessage }}" disabled="{{ isSending }}" style="margin-top: 22px; width: 100%; padding: 15px; border-radius: 999px; border: none; cursor: pointer; color: #fff; font: 700 16px 'Hanken Grotesk', sans-serif; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 12px 28px -10px rgba(31,74,160,0.6);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">{{ sendButtonLabel }}</button>
+        </sc-if>
       </div>
     </div>
   </sc-if>
@@ -298,7 +315,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 900}}">
 class Component extends DCLogic {
   state = {
-    modalOpen: false, name: '', email: '', message: '',
+    modalOpen: false, name: '', email: '', message: '', sendStatus: 'idle',
     isMobile: typeof window !== 'undefined' && window.innerWidth <= 760,
     mobileMenuOpen: false,
   };
@@ -316,13 +333,15 @@ class Component extends DCLogic {
 
   toggleMenu = () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen }));
   closeMenu = () => this.setState({ mobileMenuOpen: false });
-  openModalFromMenu = () => this.setState({ mobileMenuOpen: false, modalOpen: true });
+  openModalFromMenu = () => this.setState({ mobileMenuOpen: false, modalOpen: true, sendStatus: 'idle' });
 
-  openModal = () => this.setState({ modalOpen: true });
+  openModal = () => this.setState({ modalOpen: true, sendStatus: 'idle' });
   closeModal = () => this.setState({ modalOpen: false });
   sendMessage = () => {
+    if (this.state.sendStatus === 'sending') return;
     const { name, email, message } = this.state;
     const subject = 'Website enquiry' + (name ? ' from ' + name : '');
+    this.setState({ sendStatus: 'sending' });
     fetch('https://formsubmit.co/ajax/dw@itsxassure.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -334,8 +353,18 @@ class Component extends DCLogic {
         _cc: 'ag@itsxassure.com,rl@itsxassure.com',
         _template: 'table',
       }),
-    }).catch(() => {});
-    this.setState({ modalOpen: false, name: '', email: '', message: '' });
+    })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })).catch(() => ({ ok: res.ok, data: {} })))
+      .then(({ ok, data }) => {
+        if (ok && String(data.success) === 'true') {
+          this.setState({ sendStatus: 'success', name: '', email: '', message: '' });
+        } else {
+          this.setState({ sendStatus: 'error' });
+        }
+      })
+      .catch(() => {
+        this.setState({ sendStatus: 'error' });
+      });
   };
 
   icon(paths, size) {
@@ -377,6 +406,11 @@ class Component extends DCLogic {
       closeModal: this.closeModal,
       sendMessage: this.sendMessage,
       stop: (e) => e.stopPropagation(),
+      isSending: this.state.sendStatus === 'sending',
+      sendSuccess: this.state.sendStatus === 'success',
+      sendError: this.state.sendStatus === 'error',
+      showForm: this.state.sendStatus !== 'success',
+      sendButtonLabel: this.state.sendStatus === 'sending' ? 'Sending…' : 'Send message',
       form: { name: this.state.name, email: this.state.email, message: this.state.message },
       onName: (e) => this.setState({ name: e.target.value }),
       onEmail: (e) => this.setState({ email: e.target.value }),
