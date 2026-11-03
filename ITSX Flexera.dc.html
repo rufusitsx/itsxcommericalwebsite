@@ -572,6 +572,8 @@
           </div>
         </div>
 
+        <p style="margin: 26px 0 0; color: #5a6678; font-size: 13.5px; line-height: 1.5;">We will use these details only to assess and respond to your request. See our <a href="privacy.html" style="text-decoration: underline; color: inherit; font-weight: 600;">Privacy Policy</a>.</p>
+
         <sc-if value="{{ qHasError }}" hint-placeholder-val="{{ false }}">
           <p style="margin: 22px 0 0; padding: 12px 14px; border-radius: 10px; background: rgba(214,69,69,0.08); border: 1px solid rgba(214,69,69,0.2); color: #a63333; font-size: 14px; line-height: 1.5;">{{ qErrorText }}</p>
         </sc-if>
@@ -616,7 +618,7 @@
         <span style="color: rgba(225,234,248,0.3);">·</span><a href="#outputs" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 13px; font-weight: 600;" style-hover="color: #fff;">Customer Results</a>
         <span style="color: rgba(225,234,248,0.3);">·</span><a href="#qualify" style="text-decoration: none; color: rgba(225,234,248,0.7); font-size: 13px; font-weight: 600;" style-hover="color: #fff;">Contact</a>
       </div>
-      <div style="margin-top: 14px; color: rgba(225,234,248,0.4); font-size: 12.5px;">© 2026 ITSX Commercial. All rights reserved.</div>
+      <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center; color: rgba(225,234,248,0.4); font-size: 12.5px;"><span>© 2026 ITSX Commercial. All rights reserved.</span><a href="privacy.html" style="text-decoration: none; color: rgba(225,234,248,0.7); font-weight: 600;" style-hover="color: #fff;">Privacy Policy</a><a href="terms.html" style="text-decoration: none; color: rgba(225,234,248,0.7); font-weight: 600;" style-hover="color: #fff;">Terms of Service</a></div>
     </div>
   </footer>
 
@@ -646,6 +648,8 @@
           <sc-if value="{{ sendError }}" hint-placeholder-val="{{ false }}">
             <p style="margin: 14px 0 0; padding: 12px 14px; border-radius: 10px; background: rgba(214,69,69,0.08); border: 1px solid rgba(214,69,69,0.2); color: #a63333; font-size: 13.5px; line-height: 1.5;">Something went wrong sending your message. Please try again, or email us directly at <a href="mailto:hello@itsxcommercial.com" style="color: #a63333; font-weight: 700;">hello@itsxcommercial.com</a>.</p>
           </sc-if>
+
+          <p style="margin: 16px 0 0; color: #5a6678; font-size: 13px; line-height: 1.5;">We will use your details only to respond to your enquiry. See our <a href="privacy.html" style="text-decoration: underline; color: inherit; font-weight: 600;">Privacy Policy</a>.</p>
 
           <button onClick="{{ sendMessage }}" disabled="{{ isSending }}" style="margin-top: 22px; width: 100%; padding: 15px; border-radius: 999px; border: none; cursor: pointer; color: #fff; font: 700 16px 'Hanken Grotesk', sans-serif; background: linear-gradient(180deg, #2f6fd6, #1f4aa0); box-shadow: 0 12px 28px -10px rgba(31,74,160,0.6);" style-hover="background: linear-gradient(180deg, #3a79de, #225bbf);">{{ sendButtonLabel }}</button>
         </sc-if>
